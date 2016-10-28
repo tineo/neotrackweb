@@ -104,7 +104,7 @@ class TrackingController extends Controller
 
             $request->file('photo1')->getClientOriginalName();
 
-            $imageName = $m->getId() . '_' . $request->file('photo1')->getClientOriginalName()//.'.' .$request->file('photo')->getClientOriginalExtension()
+            $imageName = $m->getId() . '_1_' . $request->file('photo1')->getClientOriginalName()//.'.' .$request->file('photo')->getClientOriginalExtension()
             ;
 
             $request->file('photo1')->move(
@@ -117,7 +117,7 @@ class TrackingController extends Controller
 
             $request->file('photo2')->getClientOriginalName();
 
-            $imageName = $m->getId() . '_' . $request->file('photo2')->getClientOriginalName()//.'.' .$request->file('photo')->getClientOriginalExtension()
+            $imageName = $m->getId() . '_2_' . $request->file('photo2')->getClientOriginalName()//.'.' .$request->file('photo')->getClientOriginalExtension()
             ;
 
             $request->file('photo2')->move(
@@ -130,7 +130,7 @@ class TrackingController extends Controller
 
             $request->file('photo3')->getClientOriginalName();
 
-            $imageName = $m->getId() . '_' . $request->file('photo3')->getClientOriginalName()//.'.' .$request->file('photo')->getClientOriginalExtension()
+            $imageName = $m->getId() . '_3_' . $request->file('photo3')->getClientOriginalName()//.'.' .$request->file('photo')->getClientOriginalExtension()
             ;
 
             $request->file('photo3')->move(
@@ -143,7 +143,7 @@ class TrackingController extends Controller
 
             $request->file('photo4')->getClientOriginalName();
 
-            $imageName = $m->getId() . '_' . $request->file('photo4')->getClientOriginalName()//.'.' .$request->file('photo')->getClientOriginalExtension()
+            $imageName = $m->getId() . '_4_' . $request->file('photo4')->getClientOriginalName()//.'.' .$request->file('photo')->getClientOriginalExtension()
             ;
 
             $request->file('photo4')->move(
