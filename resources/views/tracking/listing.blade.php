@@ -46,7 +46,11 @@
                                 <tr>
                                     <td> {{ $track->getId() }}</td>
                                     <td> {{ $track->getCodigo() }}</td>
-                                    <td> {{ $track->getIdTienda()->getName() }}</td>
+                                    @if(is_null($track->getIdTienda()))
+                                        <td> ???? </td>
+                                    @else
+                                        <td> {{ $track->getIdTienda()->getName() }}</td>
+                                    @endif
                                     <td> {{ $track->getObs() }}</td>
                                     <td> <a href="#" data-lat="{{$track->getLat()}},{{ $track->getLng() }}"
                                             data-toggle="modal" data-target="#myMapModal">{{ $track->getLat() }}</a></td>

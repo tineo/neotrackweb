@@ -73,17 +73,23 @@ class TrackingController extends Controller
      */
     public function store(Request $request)
     {
+        Log::debug(1);
         //
         //$name = $request->input('name');
+        $tienda = 1;
+        if($request->get('tienda')!=null){
+            $tienda = $request->get('tienda');
+        }
 
         Log::debug($request->get('codigo'));
-        $track = $this->em->find('App\Entities\Tienda', 1);
+        $track = $this->em->find('App\Entities\Tienda', $tienda );
 
         $m = new Track();
 
         $m->setCodigo($request->get('codigo'));
         $m->setIdTienda($track);
-        $m->setObs($request->get('obs'));
+
+        $m->setObs("OBS : ".$request->get('obs')." > FLAG : ".$request->get('flag')." GUID : ".$request->get('guid'));
         $m->setLat($request->get('lat'));
         $m->setLng($request->get('lng'));
         $m->setNum($request->get('num'));
@@ -92,24 +98,62 @@ class TrackingController extends Controller
         $this->em->persist($m);
         $this->em->flush();
 
-        if($request->file('photo') != null){
+        if($request->file('photo1') != null) {
 
             Log::debug('Se ha subido una imagen ');
 
-            $request->file('photo')->getClientOriginalName();
+            $request->file('photo1')->getClientOriginalName();
 
-            $imageName = $m->getId() . '_'.$request->file('photo')->getClientOriginalName()
-                //.'.' .$request->file('photo')->getClientOriginalExtension()
+            $imageName = $m->getId() . '_' . $request->file('photo1')->getClientOriginalName()//.'.' .$request->file('photo')->getClientOriginalExtension()
             ;
 
-            $request->file('photo')->move(
+            $request->file('photo1')->move(
                 base_path() . '/public/images/', $imageName
             );
-
         }
+        if($request->file('photo2') != null) {
+
+            Log::debug('Se ha subido una imagen ');
+
+            $request->file('photo2')->getClientOriginalName();
+
+            $imageName = $m->getId() . '_' . $request->file('photo2')->getClientOriginalName()//.'.' .$request->file('photo')->getClientOriginalExtension()
+            ;
+
+            $request->file('photo2')->move(
+                base_path() . '/public/images/', $imageName
+            );
+        }
+        if($request->file('photo3') != null) {
+
+            Log::debug('Se ha subido una imagen ');
+
+            $request->file('photo3')->getClientOriginalName();
+
+            $imageName = $m->getId() . '_' . $request->file('photo3')->getClientOriginalName()//.'.' .$request->file('photo')->getClientOriginalExtension()
+            ;
+
+            $request->file('photo3')->move(
+                base_path() . '/public/images/', $imageName
+            );
+        }
+        if($request->file('photo4') != null) {
+
+            Log::debug('Se ha subido una imagen ');
+
+            $request->file('photo4')->getClientOriginalName();
+
+            $imageName = $m->getId() . '_' . $request->file('photo4')->getClientOriginalName()//.'.' .$request->file('photo')->getClientOriginalExtension()
+            ;
+
+            $request->file('photo4')->move(
+                base_path() . '/public/images/', $imageName
+            );
+        }
+
         //$this->em->detach($m);
 
-        return response()->json(array('obs' => $m->getObs()));
+        return response()->json(array('code' => $m->getCodigo()));
 
 
 

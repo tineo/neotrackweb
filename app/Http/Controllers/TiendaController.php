@@ -30,6 +30,7 @@ class TiendaController extends Controller
     public function index()
     {
         //
+        Log::debug("tiendas");
         $query =$this->em->createQuery("SELECT s FROM App\Entities\Tienda s");
         $data = $query->getResult( Query::HYDRATE_ARRAY);
         return $data;
